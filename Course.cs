@@ -9,20 +9,21 @@ public class Course
         Name = name;
         MaxSeats = maxSeats;
     }
-    public void Enroll(Student student) // Detta anmäler en student till kursen
+public void Enroll(Student student)
+{
+    if (Students.Contains(student)) return; // Kolla dubblett FÖRST - tyst avslut, ingen platskoll behövs
+    
+    if (Students.Count >= MaxSeats) // Kolla plats sen
     {
-        if (Students.Count >= MaxSeats) // Detta kollar om kursen redan är full
-        {
-            Console.WriteLine("Kursen är tyvärr full"); // Meddelar istället för att lägga till
-            return ; // Avbryter metoden här dvs inget mer kommer köras.
-        }
-        if (Students.Contains(student)) return; // Redan anmäld - avbryt, ingen dubblett.
+        Console.WriteLine("Kursen är tyvärr full");
+        return;
+    }
 
-        Students.Add(student); // Lägg till studenten i kursens lista
-        if (!student.Courses.Contains(this)) // Kollar att kursen inte redan finns hos studenten.
-        {
-            student.Courses.Add(this); // Detta lägger til kursen i studentens lista också - båda hållen ska stämma.
-        }
+    Students.Add(student);
+    if (!student.Courses.Contains(this))
+    {
+        student.Courses.Add(this);
+    }
 }
    public void Remove(Student student) // Metod som tar bort en student från kursen.
     {
