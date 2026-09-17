@@ -29,10 +29,10 @@ public class Course
         if (!Students.Contains(student)) // Kollar om studenten inte finns i kursen.
         {
             return; // Detta avslutar metoden utan att något kraschar.
-        
+        }
         Students.Remove(student); // Tar bort studenten ur kursens egen lista
         student.Courses.Remove(this); // Går till studenten Courses-lista och tar birt den här kursen därifrån också, så de hålls synkade.
-        }
+        
 
     }
     public void RollCall() // Skriver ut alla studenter i kursen
@@ -48,7 +48,7 @@ public class Course
     public override string ToString()
     {
         return $"{Name} ({Students.Count}/{MaxSeats} platser)"; // Bygger textsträngen med nman samt aktuellt antal/max platser
-        
+
     }
 
 }
