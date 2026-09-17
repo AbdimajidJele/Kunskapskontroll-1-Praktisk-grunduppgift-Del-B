@@ -35,4 +35,20 @@ public class Course
         }
 
     }
+    public void RollCall() // Skriver ut alla studenter i kursen
+
+    {
+        foreach (Student s in Students) // detta använder jag frö att loopa igenom varje student i listan
+        {
+            Console.WriteLine(s.Name);; // Skriver ut studentens namn
+    
+        }
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} ({Students.Count}/{MaxSeats} platser)"; // Bygger textsträngen med nman samt aktuellt antal/max platser
+        
+    }
+
 }
